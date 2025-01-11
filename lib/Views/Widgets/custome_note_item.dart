@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,7 +13,7 @@ class NoteIteam extends StatelessWidget {
       // height: 150,
       // width: 150,
       decoration: BoxDecoration(
-        color: const Color(0xffFFFCC80),
+        color: const Color(0xfffffcc80),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
