@@ -32,7 +32,7 @@ class NoteIteam extends StatelessWidget {
                 "El3abod",
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.4),
-                  fontSize: 16,
+                  fontSize: 18,
                 ),
               ),
             ),
