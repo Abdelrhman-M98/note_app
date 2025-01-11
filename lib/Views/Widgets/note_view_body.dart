@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/Views/Widgets/custom_appbar.dart';
 import 'package:note_app/Views/Widgets/custome_note_item.dart';
 import 'package:note_app/Views/Widgets/note_list_view.dart';
+import 'package:note_app/constants.dart';
 
 class NoteViewBody extends StatelessWidget {
   const NoteViewBody({super.key});
