@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:note_app/Views/Widgets/colors_list_view.dart';
 import 'package:note_app/Views/Widgets/custom_button.dart';
 import 'package:note_app/Views/Widgets/custom_text_field.dart';
 import 'package:note_app/cubits/add_note/add_note_cubit.dart';
@@ -48,6 +49,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
             maxLine: 5,
           ),
           const SizedBox(
+            height: 20,
+          ),
+          const SizedBox(
+            height: 60,
+            child: ColorsListView(),
+          ),
+          const SizedBox(
             height: 32,
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
@@ -55,31 +63,34 @@ class _AddNoteFormState extends State<AddNoteForm> {
               return CustomButton(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
-                  if (key.currentState!.validate()) {
-                    var currentDate = DateTime.now();
-                    var formattedDate =
-                        DateFormat('dd-mm-yyyy').format(currentDate);
-
-                    key.currentState!.save();
-                    var noteModel = NoteModel(
-                        title: title!,
-                        subTitle: subTitle!,
-                        date: formattedDate.toString(),
-                        color: Colors.lightBlue.value);
-                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
+                  validateAndSendData(context);
                 },
               );
             },
           ),
           const SizedBox(
-            height: 60,
+            height: 50,
           ),
         ],
       ),
     );
+  }
+
+  void validateAndSendData(BuildContext context) {
+    if (key.currentState!.validate()) {
+      var currentDate = DateTime.now();
+      var formattedDate = DateFormat('dd-mm-yyyy').format(currentDate);
+
+      key.currentState!.save();
+      var noteModel = NoteModel(
+          title: title!,
+          subTitle: subTitle!,
+          date: formattedDate.toString(),
+          color: Colors.lightBlue.value);
+      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+    } else {
+      autovalidateMode = AutovalidateMode.always;
+      setState(() {});
+    }
   }
 }
