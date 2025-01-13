@@ -9,35 +9,32 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: const NoteViewBody(),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: FloatingActionButton(
-            onPressed: () {
-              showModalBottomSheet(
-                  isScrollControlled: true,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  context: context,
-                  builder: (context) {
-                    return const AddNoteBottomSheet();
-                  });
-            },
-            backgroundColor: Colors.cyanAccent,
-            shape: const CircleBorder(),
-            child: const Icon(
-              Icons.add,
-              color: Colors.black,
-            ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: const NoteViewBody(),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(right: 16.0),
+        child: FloatingActionButton(
+          onPressed: () {
+            showModalBottomSheet(
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                context: context,
+                builder: (context) {
+                  return const AddNoteBottomSheet();
+                });
+          },
+          backgroundColor: Colors.cyanAccent,
+          shape: const CircleBorder(),
+          child: const Icon(
+            Icons.add,
+            color: Colors.black,
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
     );
   }
 }
