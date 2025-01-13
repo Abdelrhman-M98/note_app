@@ -53,7 +53,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           const SizedBox(
             height: 60,
-            child: ColorsListView(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 3.0),
+              child: ColorsListView(),
+            ),
           ),
           const SizedBox(
             height: 32,
